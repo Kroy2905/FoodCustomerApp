@@ -2,11 +2,25 @@ package com.foodApp.customerapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.foodApp.customerapp.base.BaseActivity
+import com.foodApp.customerapp.databinding.ActivityMainBinding
+import com.foodApp.customerapp.viewmodels.MainViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
+    MainViewModel::class.java,
+    { inflater -> ActivityMainBinding.inflate(inflater) }
+) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //activity
+        viewModel.demoData.observe(this) {
+            binding.textview.text=it.toString()
+        }
+
+
+    }
+
+    override fun setupViews() {
+
+        // Initialize any views here
     }
 }
