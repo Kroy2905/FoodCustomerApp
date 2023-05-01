@@ -27,8 +27,8 @@
 
                 <ImageView
                     android:id="@+id/custprofilepic"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/curve_ui_bg"
@@ -43,9 +43,10 @@
                     android:layout_height="wrap_content"
                     android:text="Deliver to"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/custprofilepic"
+                    android:layout_marginStart="24dp"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/custprofilepic" />
 
@@ -53,9 +54,9 @@
                     android:id="@+id/cust_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer name"
+                    android:text="koustav Roy"
                     android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/custprofilepic"
                     app:layout_constraintEnd_toEndOf="@+id/deliverText"
@@ -68,17 +69,58 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:padding="5dp"
-                    android:text="What would you like to order ? "
+                    android:text="Let's ...  "
+
+                    android:textColor="@color/white"
+                    android:textSize="45sp"
+
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.006"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/custprofilepic" />
+
+                <TextView
+                    android:id="@+id/letsgrabtext"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:padding="5dp"
+                    android:text="Grab Food "
+
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/whatwouldyorder" />
+
+                <TextView
+                    android:id="@+id/withgrabberstext"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:padding="5dp"
+                    android:text="With Grabbers "
 
                     android:textColor="@color/white"
                     android:textSize="30sp"
 
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/custprofilepic" />
+                    app:layout_constraintTop_toBottomOf="@id/letsgrabtext" />
 
                 <LinearLayout
                     android:id="@+id/searchlinearlayout"
@@ -89,7 +131,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/whatwouldyorder">
+                    app:layout_constraintTop_toBottomOf="@+id/withgrabberstext">
 
                     <TextView
 
@@ -115,7 +157,9 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview1"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
@@ -129,12 +173,12 @@
                     />
 
                 <TextView
-                    android:id="@+id/bestRestaurantstext"
+                    android:id="@+id/fastdeliverytext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="10dp"
-                    android:text="Best Restaurants"
+                    android:text="Fast Delivery"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -150,12 +194,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="24dp"
                     android:text="See more"
-                    android:textColor="@color/error"
+                    android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/bestRestaurantstext"
+                    app:layout_constraintBottom_toBottomOf="@+id/fastdeliverytext"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/bestRestaurantstext"
+                    app:layout_constraintTop_toTopOf="@+id/fastdeliverytext"
                     tools:layout_editor_absoluteX="218dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -165,13 +209,49 @@
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
                     android:paddingHorizontal="22dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/bestRestaurantstext"
+                    app:layout_constraintTop_toBottomOf="@+id/fastdeliverytext"
 
 
                     />
+
+                <TextView
+                    android:id="@+id/moto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+
+                    android:layout_marginTop="20dp"
+                    android:padding="5dp"
+
+                    android:text="Quick , Safe and Yummy "
+
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerview2" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/app_logo"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/moto"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="10dp"
+                    />
+
+
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
