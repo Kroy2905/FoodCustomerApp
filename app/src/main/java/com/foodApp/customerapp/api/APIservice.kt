@@ -1,6 +1,9 @@
 package com.foodApp.customerapp.api
 
 //import com.myelin.ics.ui.models.*
+import com.foodApp.customerapp.models.custRegBody
+import com.foodApp.customerapp.models.custVerifyBody
+import com.foodApp.customerapp.models.statusResponse
 import com.foodApp.managementapp.models.demoResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -30,4 +33,11 @@ interface APIservice {
 //
 //    @POST("/createevent")    // API to send log details to server
 //    suspend fun  createEvent(@Body logDetails: LogDetails) : Response <LogResponse>
+
+    @POST("/customerregister")    // API to verify restaurant
+    suspend fun  registerCustomer(@Body custRegBody: custRegBody) : Response <statusResponse>
+
+
+    @POST("/customerverify")    // API to verify restaurant
+    suspend fun  verifyCustomer(@Body custVerifyBody: custVerifyBody) : Response <statusResponse>
 }

@@ -1,41 +1,34 @@
 package com.foodApp.customerapp.base
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.foodApp.customerapp.api.APIservice
+import com.foodApp.customerapp.models.custRegBody
+import com.foodApp.customerapp.models.custVerifyBody
+import com.foodApp.customerapp.models.statusResponse
 
 import com.foodApp.managementapp.models.demoResponse
 
 class BaseRepository  (private  val  apIservice: APIservice) {
 
     private val demoLiveData = MutableLiveData<demoResponse>()
-//    private val customerAdded =MutableLiveData<LogResponse>()
-//    private val tripdetails =MutableLiveData<tripResponse>()
-//    private val faceEmbeddings =MutableLiveData<faceEmbeddings>()
+
+    private val customerVerify =MutableLiveData<statusResponse>()
+    private val regCustomer =MutableLiveData<statusResponse>()
+    //    private val faceEmbeddings =MutableLiveData<faceEmbeddings>()
 //    val driverlogsLogResponse =MutableLiveData<LogResponse>()
 //
     val demoData: LiveData<demoResponse>
         get() = demoLiveData
-//    val customerAddedLogResponse : LiveData<LogResponse>
-//    get() = customerAdded
-//    val getTripDetails : LiveData<tripResponse>
-//    get() = tripdetails
-//
-//    val fembs : LiveData<faceEmbeddings>
-//    get() = faceEmbeddings
-//    val driverlogs : LiveData<LogResponse>
-//        get() = driverlogsLogResponse
-//
-//
-////    suspend fun getQuotes(page: Int) {
-////        val result = apIservice.getQuotes(page)
-////        if (result?.body() != null){
-////            quotesLiveData.postValue(result.body())
-////        }
-////
-////    }
-//
-//
+    // Partner live data
+    val custVerifyResponse: LiveData<statusResponse>
+        get() = customerVerify
+
+    //    Restaurant Live Data
+    val custRegResponse: LiveData<statusResponse>
+        get() = regCustomer
+
     suspend fun getDemodata() {
         val result = apIservice.demofunc()
         if (result.body()!=null){
@@ -43,6 +36,24 @@ class BaseRepository  (private  val  apIservice: APIservice) {
         }
 
     }
+    suspend fun registerCust(regBody: custRegBody) {
+        Log.d("Body->","Req->${regBody.toString()}")
+        val result = apIservice.registerCustomer(regBody)
+        Log.d("Body->","Response->${result.body()}")
+        if (result.body()!=null){
+            regCustomer.postValue(result.body())
+        }
+
+    }
+    suspend fun verifyCust(custVerifyBody: custVerifyBody) {
+        val result = apIservice.verifyCustomer(custVerifyBody)
+        if (result.body()!=null){
+            customerVerify.postValue(result.body())
+        }
+
+    }
+
+
 //    suspend fun getTripDetails(registration_no: String) {
 //        val result = apIservice.getTripDetails(registration_no)
 //        if (result.body() != null) {
