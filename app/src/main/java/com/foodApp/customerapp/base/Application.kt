@@ -2,8 +2,11 @@ package com.foodApp.customerapp.base
 
 import android.app.Application
 import android.content.Intent
+import android.graphics.Typeface
 import android.util.Log
+import androidx.core.content.res.ResourcesCompat
 import com.foodApp.customerapp.BuildConfig
+import com.foodApp.customerapp.R
 import com.foodApp.customerapp.api.APIservice
 import com.foodApp.customerapp.api.RetrofitHelper
 
@@ -19,11 +22,37 @@ class Application : Application() {
         versionCode = BuildConfig.VERSION_CODE
         versionName = BuildConfig.VERSION_NAME
         Log.d(TAG, "Version : $versionName")
+        setDefaultFont()
     }
 
     private fun initRepo() {
         val logService = RetrofitHelper.getInstance().create(APIservice::class.java)
         repository = BaseRepository(logService)
+    }
+
+    private fun setDefaultFont() {
+        val customFont = Typeface.createFromAsset(assets, "font/app_font1.ttf")
+        val defaultFont = ResourcesCompat.getFont(this, R.font.app_font1)
+        if (defaultFont != null) {
+            val newFont = Typeface.create(customFont, Typeface.NORMAL)
+            val newDefaultFont = Typeface.create(defaultFont, Typeface.NORMAL)
+            // Set the default font for the app
+            try {
+                val field = Typeface::class.java.getDeclaredField("DEFAULT")
+                field.isAccessible = true
+                field.set(null, newDefaultFont)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            // Set the default monospace font for the app
+            try {
+                val field = Typeface::class.java.getDeclaredField("MONOSPACE")
+                field.isAccessible = true
+                field.set(null, newFont)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
 

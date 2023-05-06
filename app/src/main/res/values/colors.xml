@@ -24,6 +24,8 @@
     <color name="starColor">#FFAB00</color>
     <color name="colorFavourite">#D50000</color>
     <color name="error">#B71C1C</color>
+    <color name="appPrimaryColour">#77BC3F</color>
+    <color name="searchBoxColor">#E8EAE7</color>
 
 
 </resources>

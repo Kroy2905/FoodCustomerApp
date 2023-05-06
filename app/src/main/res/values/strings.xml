@@ -62,4 +62,10 @@
     <string name="reset_password_instruction">Enter OTP received in mail and create a new password</string>
     <string name="error">Error</string>
     <string name="profile_pic_content_description">Profile Picture</string>
+    <string name="title_activity_landing_page">LandingPageActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_grab">Grab</string>
+    <string name="title_settings">Settings</string>
 </resources>

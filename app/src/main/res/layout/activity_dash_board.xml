@@ -31,7 +31,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/curve_ui_bg"
+                    android:background="@drawable/circular_img_bg"
                     android:padding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -259,7 +259,7 @@
     </ScrollView>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorlayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
