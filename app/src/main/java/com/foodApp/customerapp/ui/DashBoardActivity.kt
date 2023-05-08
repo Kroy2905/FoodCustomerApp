@@ -1,16 +1,13 @@
 package com.foodApp.customerapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.foodApp.customerapp.R
 import com.foodApp.customerapp.adapters.CategoryAdapter
 import com.foodApp.customerapp.adapters.FastDeliveryAdapter
 import com.foodApp.customerapp.base.BaseActivity
 import com.foodApp.customerapp.databinding.ActivityDashBoardBinding
 import com.foodApp.customerapp.models.CategoryDomain
-import com.foodApp.customerapp.models.FastDeliveryDomain
+import com.foodApp.customerapp.models.TopRestaurantDomain
 import com.foodApp.customerapp.viewmodels.DashBoardviewModel
 
 class DashBoardActivity : BaseActivity<ActivityDashBoardBinding, DashBoardviewModel>(
@@ -28,11 +25,11 @@ DashBoardviewModel::class.java,
         binding.recyclerview1.adapter = adapter
 
 
-        val data2 = mutableListOf<FastDeliveryDomain>()
-        data2.add(FastDeliveryDomain("Pizza Hut",R.drawable.pizzafullimg,"4.2 (30k+ reviews)",32))
-        data2.add(FastDeliveryDomain("Dada Bowdi",R.drawable.biryanifullimg,"4.7 (10k+ reviews)",52))
-        data2.add(FastDeliveryDomain("Chowman",R.drawable.noodlesfullimg,"4.0 (3000+ reviews)",22))
-        data2.add(FastDeliveryDomain("Burger King",R.drawable.burgerfullimg,"4.2 (300+ reviews)",45))
+        val data2 = mutableListOf<TopRestaurantDomain>()
+        data2.add(TopRestaurantDomain("Pizza Hut",R.drawable.pizzafullimg,"4.2 (30k+ reviews)",32))
+        data2.add(TopRestaurantDomain("Dada Bowdi",R.drawable.biryanifullimg,"4.7 (10k+ reviews)",52))
+        data2.add(TopRestaurantDomain("Chowman",R.drawable.noodlesfullimg,"4.0 (3000+ reviews)",22))
+        data2.add(TopRestaurantDomain("Burger King",R.drawable.burgerfullimg,"4.2 (300+ reviews)",45))
         val adapter2 = FastDeliveryAdapter(data2)
         binding.recyclerview2.adapter = adapter2
     }

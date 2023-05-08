@@ -7,10 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.foodApp.customerapp.R
-import com.foodApp.customerapp.models.CategoryDomain
-import com.foodApp.customerapp.models.FastDeliveryDomain
+import com.foodApp.customerapp.models.TopRestaurantDomain
 
-class FastDeliveryAdapter(private val data: List<FastDeliveryDomain>) : RecyclerView.Adapter<FastDeliveryAdapter.ViewHolder>() {
+class FastDeliveryAdapter(private val data: List<TopRestaurantDomain>) : RecyclerView.Adapter<FastDeliveryAdapter.ViewHolder>() {
 
     // Create a ViewHolder class that holds references to the views
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

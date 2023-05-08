@@ -1,6 +1,6 @@
 package com.foodApp.customerapp.models
 
-data class FastDeliveryDomain(
+data class TopRestaurantDomain(
     val title:String,
     val pic :Int,
     val star:String,
