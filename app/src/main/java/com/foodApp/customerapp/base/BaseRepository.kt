@@ -6,9 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import com.foodApp.customerapp.api.APIservice
 import com.foodApp.customerapp.models.custRegBody
 import com.foodApp.customerapp.models.custVerifyBody
+import com.foodApp.customerapp.models.restaurantItemResponse
 import com.foodApp.customerapp.models.statusResponse
 
 import com.foodApp.managementapp.models.demoResponse
+import com.foodApp.managementapp.models.fooditemResponse
 
 class BaseRepository  (private  val  apIservice: APIservice) {
 
@@ -16,6 +18,8 @@ class BaseRepository  (private  val  apIservice: APIservice) {
 
     private val customerVerify =MutableLiveData<statusResponse>()
     private val regCustomer =MutableLiveData<statusResponse>()
+    private val getfooditem =MutableLiveData<fooditemResponse>()
+    private val getrestauranitem =MutableLiveData<restaurantItemResponse>()
     //    private val faceEmbeddings =MutableLiveData<faceEmbeddings>()
 //    val driverlogsLogResponse =MutableLiveData<LogResponse>()
 //
@@ -24,17 +28,18 @@ class BaseRepository  (private  val  apIservice: APIservice) {
     // Partner live data
     val custVerifyResponse: LiveData<statusResponse>
         get() = customerVerify
-
     //    Restaurant Live Data
     val custRegResponse: LiveData<statusResponse>
         get() = regCustomer
-
+    val _getfooditem: LiveData<fooditemResponse>
+        get() = getfooditem
+    val _getrestaurantitem: LiveData<restaurantItemResponse>
+        get() = getrestauranitem
     suspend fun getDemodata() {
         val result = apIservice.demofunc()
         if (result.body()!=null){
             demoLiveData.postValue(result.body())
         }
-
     }
     suspend fun registerCust(regBody: custRegBody) {
         Log.d("Body->","Req->${regBody.toString()}")
@@ -43,15 +48,38 @@ class BaseRepository  (private  val  apIservice: APIservice) {
         if (result.body()!=null){
             regCustomer.postValue(result.body())
         }
-
     }
     suspend fun verifyCust(custVerifyBody: custVerifyBody) {
         val result = apIservice.verifyCustomer(custVerifyBody)
         if (result.body()!=null){
             customerVerify.postValue(result.body())
         }
+    }
+
+    suspend fun getFooditems(restaurantId:String) {
+        val result = apIservice.getFood(restaurantID = restaurantId)
+        if (result.body()!=null){
+            Log.d("Response->",result.body().toString())
+            getfooditem.postValue(result.body())
+        }else{
+            Log.d("Response->",result.body().toString())
+        }
 
     }
+
+
+    suspend fun getRestaurantitems() {
+        val result = apIservice.getRestaurants()
+        if (result.body()!=null){
+            Log.d("Response->",result.body().toString())
+            getrestauranitem.postValue(result.body())
+        }else{
+            Log.d("Response->",result.body().toString())
+        }
+
+    }
+
+
 
 
 //    suspend fun getTripDetails(registration_no: String) {

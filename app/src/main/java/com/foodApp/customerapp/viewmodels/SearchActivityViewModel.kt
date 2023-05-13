@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.foodApp.customerapp.base.BaseRepository
 import com.foodApp.customerapp.base.BaseViewModel
 import com.foodApp.managementapp.models.demoResponse
+import com.foodApp.managementapp.models.fooditemResponse
 import kotlinx.coroutines.launch
 
 class SearchActivityViewModel (private val repository: BaseRepository): BaseViewModel(){
@@ -18,5 +19,15 @@ class SearchActivityViewModel (private val repository: BaseRepository): BaseView
     }
     val  demoData : LiveData<demoResponse>
         get() = repository.demoData
+
+
+    fun getFoodItems(restaurantId:String){
+        viewModelScope.launch {
+            repository.getFooditems(restaurantId)
+        }
+    }
+    val  getfoodItems : LiveData<fooditemResponse>
+        get() = repository._getfooditem
+
 
 }

@@ -2,8 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -11,36 +9,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-    android:layout_margin="8dp"
-
-
+        android:layout_margin="8dp"
+        android:elevation="8dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
-
+        app:cardElevation="7dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="10dp"
-
             >
-
             <ImageView
-                android:id="@+id/food_image"
-                android:layout_width="match_parent"
+                android:id="@+id/restaurant_image"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/noodles" />
+                android:src="@drawable/app_logo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -49,27 +42,33 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/app_font1_bold"
                     android:maxLines="1"
-                    android:text="Food Title"
-                    android:textSize="13sp"
+                    android:text="Restaurant Name"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/food_time"
+                    android:id="@+id/restaurant_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:text="32 mins"
-                    android:textSize="10sp" />
+                    android:maxLines="2"
+
+                    android:drawableStart="@drawable/location_on_img"
+                    android:text="Sri Colony ,Bagdogra"
+                    android:fontFamily="@font/app_font1_bold2"
+                    android:textSize="15sp" />
 
 
                 <TextView
-                    android:id="@+id/food_rating"
+                    android:id="@+id/restaurant_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    android:drawableStart="@drawable/rating_img"
                     android:text="4.5 (300+ ratings)"
                     android:textColor="@color/black"
-                    android:textSize="10sp" />
+                    android:textSize="15sp" />
+
+
 
             </LinearLayout>
 

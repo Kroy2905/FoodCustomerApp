@@ -3,8 +3,10 @@ package com.foodApp.customerapp.api
 //import com.myelin.ics.ui.models.*
 import com.foodApp.customerapp.models.custRegBody
 import com.foodApp.customerapp.models.custVerifyBody
+import com.foodApp.customerapp.models.restaurantItemResponse
 import com.foodApp.customerapp.models.statusResponse
 import com.foodApp.managementapp.models.demoResponse
+import com.foodApp.managementapp.models.fooditemResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -40,4 +42,12 @@ interface APIservice {
 
     @POST("/customerverify")    // API to verify restaurant
     suspend fun  verifyCustomer(@Body custVerifyBody: custVerifyBody) : Response <statusResponse>
+
+    // GET trip details
+    @GET("/getfoods")    // API to be written here
+    suspend fun getFood(@Query("restaurantID") restaurantID:String) : Response <fooditemResponse>
+
+    // GET trip details
+    @GET("/getrestaurants")    // API to be written here
+    suspend fun getRestaurants() : Response <restaurantItemResponse>
 }

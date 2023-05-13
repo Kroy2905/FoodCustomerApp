@@ -15,6 +15,7 @@ class Utils {
         val BASE_URL = "https://y8hrstbmr8.execute-api.ap-south-1.amazonaws.com/"
         val ONGOING_NOTIFICATION_ID = 6660
         val SUCCESS = "200"
+        val RESTAURANT_DETAILS = "restaurant_details"
         val PARTNER_CODE = "PTNR"
         val RESTAURENT_CODE = "RSNT"
         var TRIP_START = false
