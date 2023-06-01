@@ -170,6 +170,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/sliderViewPager"
 
+
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="16dp"
@@ -190,19 +191,22 @@
                     android:layout_marginTop="10dp"
                     android:text="Popular Category"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/app_font1_bold2"
+                    android:letterSpacing="0.08"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sliderViewPager"
                     tools:layout_editor_absoluteX="218dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview1"
+                    android:id="@+id/topcategory_recyclerview"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:clipToPadding="false"
 
 
@@ -214,34 +218,54 @@
                     />
 
                 <TextView
-                    android:id="@+id/toprestauranttext"
+                    android:id="@+id/allrestauranttext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:layout_marginTop="10dp"
-                    android:text="Top Restaurants"
+                    android:text="All Restaurants"
+                    android:fontFamily="@font/app_font1_bold2"
+                    android:letterSpacing="0.08"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerview1"
+                    app:layout_constraintTop_toBottomOf="@id/topcategory_recyclerview"
                     tools:layout_editor_absoluteX="218dp" />
 
                 <TextView
-                    android:id="@+id/seemoretext"
+                    android:id="@+id/chooseText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
 
-                    android:text="See more"
-                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="200 restaurants at your service"
+                    android:fontFamily="@font/app_font1_bold2"
+                    android:letterSpacing="0.03"
+                    android:textColor="#4E4D4D"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/toprestauranttext"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/toprestauranttext"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/allrestauranttext"
                     tools:layout_editor_absoluteX="218dp" />
+
+<!--                <TextView-->
+<!--                    android:id="@+id/seemoretext"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+
+<!--                    android:text="See more"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/toprestauranttext"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/toprestauranttext"-->
+<!--                    tools:layout_editor_absoluteX="218dp" />-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview2"
@@ -250,65 +274,65 @@
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
 
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
 
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/toprestauranttext"
+                    app:layout_constraintTop_toBottomOf="@+id/chooseText"
 
 
                     />
 
 
-                <TextView
-                    android:id="@+id/bestoffertext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+<!--                <TextView-->
+<!--                    android:id="@+id/bestoffertext"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
 
-                    android:layout_marginTop="10dp"
-                    android:text="Best Offers"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerview2"
-                    tools:layout_editor_absoluteX="218dp" />
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text="Best Offers"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="25sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/recyclerview2"-->
+<!--                    tools:layout_editor_absoluteX="218dp" />-->
 
-                <TextView
-                    android:id="@+id/seemoretext2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
+<!--                <TextView-->
+<!--                    android:id="@+id/seemoretext2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="10dp"-->
 
-                    android:text="See more"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/bestoffertext"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/bestoffertext"
-                    tools:layout_editor_absoluteX="218dp" />
+<!--                    android:text="See more"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/bestoffertext"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/bestoffertext"-->
+<!--                    tools:layout_editor_absoluteX="218dp" />-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview3"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
-                    android:clipToPadding="false"
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/recyclerview3"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:clipToPadding="false"-->
 
-                    android:orientation="horizontal"
+<!--                    android:orientation="horizontal"-->
 
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/bestoffertext"
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/bestoffertext"-->
 
 
-                    />
+<!--                    />-->
 
 
                 <TextView
@@ -331,7 +355,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
 
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerview3" />
+                    app:layout_constraintTop_toBottomOf="@id/recyclerview2" />
                 <ImageView
                     android:id="@+id/endgif"
                     android:layout_width="200dp"

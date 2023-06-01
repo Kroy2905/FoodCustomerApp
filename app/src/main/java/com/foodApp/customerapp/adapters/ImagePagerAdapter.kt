@@ -18,4 +18,5 @@ class ImagePagerAdapter(fm: FragmentManager, private val imageIds: List<Int>) : 
     override fun getCount(): Int {
         return imageIds.size
     }
+
 }

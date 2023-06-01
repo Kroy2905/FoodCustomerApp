@@ -22,7 +22,7 @@ DashBoardviewModel::class.java,
         data.add(CategoryDomain("Biryani", R.drawable.biriyani))
         data.add(CategoryDomain("Noodles", R.drawable.noodles))
         val adapter = CategoryAdapter(data)
-        binding.recyclerview1.adapter = adapter
+        binding.topcategoryRecyclerview.adapter = adapter
 
 
         val data2 = mutableListOf<TopRestaurantDomain>()

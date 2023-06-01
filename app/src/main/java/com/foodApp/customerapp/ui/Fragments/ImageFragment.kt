@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.foodApp.customerapp.R
 import com.foodApp.customerapp.base.BaseFragment
 import com.foodApp.customerapp.databinding.FragmentHomeBinding
@@ -52,4 +53,21 @@ class ImageFragment : BaseFragment<FragmentImageBinding, HomeViewModel>(
     override fun setupViews() {
         binding.foodImage.setImageResource(imageId)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val imageId = arguments?.getInt(ARG_IMAGE_ID, R.drawable.discount1)
+
+        // Use Glide library to load the image or set the default placeholder image
+        Glide.with(this)
+            .load(imageId)
+            .placeholder(R.drawable.discount1)
+            .into(binding.foodImage)
+
+
+
+    }
+
+
 }

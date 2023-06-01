@@ -33,7 +33,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchActivityViewMod
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        finish()
+      finish()
         super.onBackPressed()
     }
 
