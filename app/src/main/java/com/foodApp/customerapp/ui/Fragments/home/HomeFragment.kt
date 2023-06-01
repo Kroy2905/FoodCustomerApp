@@ -1,22 +1,23 @@
 package com.foodApp.customerapp.ui.Fragments.home
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
-import com.bumptech.glide.Glide
 import com.foodApp.customerapp.R
 import com.foodApp.customerapp.Utilities.OnItemClickListener
+import com.foodApp.customerapp.Utilities.searchItemInterface
 import com.foodApp.customerapp.adapters.CategoryAdapter
-import com.foodApp.customerapp.adapters.FastDeliveryAdapter
 import com.foodApp.customerapp.adapters.ImagePagerAdapter
 import com.foodApp.customerapp.adapters.Restaurantitemadapter
 import com.foodApp.customerapp.base.BaseFragment
 import com.foodApp.customerapp.databinding.FragmentHomeBinding
 import com.foodApp.customerapp.models.CategoryDomain
-import com.foodApp.customerapp.models.TopRestaurantDomain
+import com.foodApp.customerapp.models.searchItems
+import com.foodApp.customerapp.ui.RestaurantFoodItemActivity
 import com.foodApp.customerapp.ui.SearchActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
 
     private var handler = Handler()
     private var autoSliderRunnable: Runnable? = null
+    private var mListener: searchItemInterface? = null
+
     private val imageIds = listOf(R.drawable.discount1,
         R.drawable.discount2,
         R.drawable.discount3,
@@ -75,11 +78,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
     }
 
 
-
+    var restaurantList = mutableListOf<searchItems>()
     @SuppressLint("SetTextI18n")
     override fun setupViews() {
-
         //Top categories
+        binding.searchBox.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            intent.putParcelableArrayListExtra("list", ArrayList(restaurantList))
+            startActivity(intent)
+        }
 
         val data = mutableListOf<CategoryDomain>()
         data.add(CategoryDomain("Pizza", R.drawable.pizza))
@@ -95,11 +102,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
         //All restaurants
 
         viewModel.getRestaurantItems.observe(this){
+
+            for(x in it){
+                restaurantList.add(
+                    searchItems(x.restaurantName,
+                x.RestaurantImgUrl,1,
+                x.restaurantID)
+                )
+            }
             binding.chooseText.text= "${it.size} restaurants at your service"
             binding.recyclerview2.adapter=
                 Restaurantitemadapter(it,object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val intent = Intent(requireContext(), SearchActivity::class.java)
+                    val intent = Intent(requireContext(), RestaurantFoodItemActivity::class.java)
                     intent.putExtra("restaurantId", it[position].restaurantID)
                     intent.putExtra("restaurantName", it[position].restaurantName)
                     intent.putExtra("restaurantAddress", it[position].restaurantAddress)
@@ -107,8 +122,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
                     //  Toast.makeText(requireContext(),it[position].restaurantName,Toast.LENGTH_SHORT).show()
                 }
 
-            })
+                })
         }
+        mListener?.onListReceived(restaurantList)
         viewModel.getRestaurantItems()
 
 //                //Best offers kept same as above
@@ -129,6 +145,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
 
         super.onViewCreated(view, savedInstanceState)
     }
+
+
+
+
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 

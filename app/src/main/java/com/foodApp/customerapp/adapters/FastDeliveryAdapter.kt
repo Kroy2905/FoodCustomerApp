@@ -14,7 +14,7 @@ class FastDeliveryAdapter(private val data: List<TopRestaurantDomain>) : Recycle
     // Create a ViewHolder class that holds references to the views
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.food_image)
-        val title: TextView = itemView.findViewById(R.id.restaurant_title)
+        val title: TextView = itemView.findViewById(R.id.searchitem_title)
         val time: TextView = itemView.findViewById(R.id.food_time)
         val ratiing: TextView = itemView.findViewById(R.id.food_rating)
     }

@@ -1,6 +1,5 @@
 package com.foodApp.customerapp.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,9 +21,9 @@ class Restaurantitemadapter(private val data: restaurantItemResponse, private va
             itemView.setOnClickListener { listener.onItemClick(adapterPosition) }
         }
 
-        val imageView: ImageView = itemView.findViewById(R.id.restaurant_image)
-        val title: TextView = itemView.findViewById(R.id.restaurant_title)
-        val address: TextView = itemView.findViewById(R.id.restaurant_address)
+        val imageView: ImageView = itemView.findViewById(R.id.searchitem_image)
+        val title: TextView = itemView.findViewById(R.id.searchitem_title)
+        val address: TextView = itemView.findViewById(R.id.searchitem_type)
         val rating: TextView = itemView.findViewById(R.id.restaurant_rating)
     }
 
@@ -42,9 +41,10 @@ class Restaurantitemadapter(private val data: restaurantItemResponse, private va
 
         Glide.with(holder.itemView.context/* context */)
             //.load(storageRef.child("/fooditems/foodItem1.jpeg"))
-            .load(R.drawable.app_logo)
+            .load(item.RestaurantImgUrl)
             .error(R.drawable.app_logo)
             .into(holder.imageView)
+
 
 
         holder.title.text=item.restaurantName

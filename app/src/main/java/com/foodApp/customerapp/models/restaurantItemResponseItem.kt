@@ -7,5 +7,7 @@ data class restaurantItemResponseItem(
     val restaurantEmail: String,
     val restaurantID: String,
     val restaurantMobileNo: String,
-    val restaurantName: String
+    val restaurantName: String,
+    val RestaurantImgUrl: String,
+
 )

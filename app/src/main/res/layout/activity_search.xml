@@ -4,159 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appPrimaryColour"
     android:padding="10dp"
+
     tools:context=".ui.SearchActivity">
 
-    <androidx.cardview.widget.CardView
+    <SearchView
+        android:background="@drawable/button_bg"
+
+
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
-        app:cardCornerRadius="10dp"
-        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:iconifiedByDefault="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:queryHint="Search for food or restaurant"
+
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/matchitems_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         android:orientation="vertical"
-        android:elevation="8dp"
-        android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/custprofilepic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/curve_bg_app_color"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
 
 
-                android:layout_marginEnd="44dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/burgerfullimg" />
-
-            <TextView
-                android:id="@+id/restaurantName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Restaurant Name"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/app_font1_bold"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textColor="#AAA6A6"
-                android:textSize="20sp"
-                android:textStyle="bold"
-
-
-                app:layout_constraintStart_toStartOf="parent"
-                />
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-
-                android:drawableStart="@drawable/location_on_img"
-                android:text="Address"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/app_font1_bold2"
-               android:gravity="left"
-
-
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/restaurantName" />
-
-
-            <TextView
-                android:id="@+id/textmenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/app_font1_bold"
-
-
-
-
-
-
-                android:text="Let's GRAB some food...."
-
-                android:textColor="@color/appPrimaryColour"
-                android:textSize="20sp"
-
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/custprofilepic" />
-            <ScrollView
-                android:id="@+id/scrollView"
-
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textmenu"
-                app:layout_constraintBottom_toBottomOf="parent"
-
-
-
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp"
-
-
-                >
-                <androidx.cardview.widget.CardView
-
-
-
-
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-
-                    app:cardCornerRadius="8dp"
-                    android:elevation="10dp"
-
-
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp">
-                    <androidx.recyclerview.widget.RecyclerView
-
-                        android:paddingHorizontal="10dp"
-                        android:id="@+id/restaurantItemListRecyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-
-                        android:orientation="vertical"
-
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.842"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-
-
-
-
-                        />
-
-                </androidx.cardview.widget.CardView>
-
-            </ScrollView>
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    </androidx.cardview.widget.CardView>
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
