@@ -156,7 +156,7 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/topcategory_recyclerview"
+                    android:id="@+id/whatsnew_recyclerview"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -183,7 +183,7 @@
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/topcategory_recyclerview"
+                    app:layout_constraintTop_toBottomOf="@id/whatsnew_recyclerview"
                     tools:layout_editor_absoluteX="218dp" />
 
                 <TextView

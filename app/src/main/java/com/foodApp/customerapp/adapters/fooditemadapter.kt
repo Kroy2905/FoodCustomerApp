@@ -20,6 +20,10 @@ class fooditemadapter(private val data: fooditemResponse,context: Context) : Rec
         val title: TextView = itemView.findViewById(R.id.food_title)
         val price: TextView = itemView.findViewById(R.id.food_price)
         val ratiing: TextView = itemView.findViewById(R.id.food_rating)
+        val addtextview: TextView = itemView.findViewById(R.id.addtext)
+        val minustext: TextView = itemView.findViewById(R.id.minustext)
+        val countertext: TextView = itemView.findViewById(R.id.counterText)
+        val plustext: TextView = itemView.findViewById(R.id.plustext)
     }
 
     // Inflate the view holder layout and return a new ViewHolder instance

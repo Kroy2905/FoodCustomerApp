@@ -25,6 +25,7 @@ class Restaurantitemadapter(private val data: restaurantItemResponse, private va
         val title: TextView = itemView.findViewById(R.id.searchitem_title)
         val address: TextView = itemView.findViewById(R.id.searchitem_type)
         val rating: TextView = itemView.findViewById(R.id.restaurant_rating)
+
     }
 
     // Inflate the view holder layout and return a new ViewHolder instance
@@ -52,6 +53,7 @@ class Restaurantitemadapter(private val data: restaurantItemResponse, private va
         val randomNumber = (1.0f + random.nextFloat() * 3.9f).toString()
         holder.rating.text = randomNumber.substring(0, minOf(randomNumber.length, 3))
         holder.address.text= item.restaurantAddress.toString()
+
     }
 
     // Return the number of items in the data set

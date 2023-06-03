@@ -4,10 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.foodApp.customerapp.api.APIservice
-import com.foodApp.customerapp.models.custRegBody
-import com.foodApp.customerapp.models.custVerifyBody
-import com.foodApp.customerapp.models.restaurantItemResponse
-import com.foodApp.customerapp.models.statusResponse
+import com.foodApp.customerapp.models.*
 
 import com.foodApp.managementapp.models.demoResponse
 import com.foodApp.managementapp.models.fooditemResponse
@@ -20,6 +17,7 @@ class BaseRepository  (private  val  apIservice: APIservice) {
     private val regCustomer =MutableLiveData<statusResponse>()
     private val getfooditem =MutableLiveData<fooditemResponse>()
     private val getrestauranitem =MutableLiveData<restaurantItemResponse>()
+    private val allFoodItems =MutableLiveData<allfoodItemsResponse>()
     //    private val faceEmbeddings =MutableLiveData<faceEmbeddings>()
 //    val driverlogsLogResponse =MutableLiveData<LogResponse>()
 //
@@ -35,6 +33,10 @@ class BaseRepository  (private  val  apIservice: APIservice) {
         get() = getfooditem
     val _getrestaurantitem: LiveData<restaurantItemResponse>
         get() = getrestauranitem
+    val _allfooditems: LiveData<allfoodItemsResponse>
+        get() = allFoodItems
+
+
     suspend fun getDemodata() {
         val result = apIservice.demofunc()
         if (result.body()!=null){
@@ -73,6 +75,17 @@ class BaseRepository  (private  val  apIservice: APIservice) {
         if (result.body()!=null){
             Log.d("Response->",result.body().toString())
             getrestauranitem.postValue(result.body())
+        }else{
+            Log.d("Response->",result.body().toString())
+        }
+
+    }
+
+    suspend fun getAllFoodItems() {
+        val result = apIservice.getAllFoodItems()
+        if (result.body()!=null){
+            Log.d("Response->",result.body().toString())
+            allFoodItems.postValue(result.body())
         }else{
             Log.d("Response->",result.body().toString())
         }

@@ -19,44 +19,79 @@ class SearchActivity :BaseActivity<ActivitySearchBinding, SearchViewmodel>(
     SearchViewmodel::class.java,
     { inflater -> ActivitySearchBinding.inflate(inflater) },
 ){
-
+   private lateinit var category: String
     private lateinit var itemAdapter: SearchItemAdapter
+    private  var  searchItemsList = mutableListOf<searchItems>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val myList = intent.getParcelableArrayListExtra<searchItems>("list")
+        Log.d("LIst of searchItems",myList.toString())
+        // Use the received list in the activity
+         category= intent.getStringExtra("category") !!
+
+        //Adding all restaurants
+        searchItemsList.clear()
+        for(x in myList!!){
+            searchItemsList.add(x)
+        }
+        viewModel.getallFoodItems()
+        super.onCreate(savedInstanceState)
+    }
 
 
     override fun setupViews() {
-        val myList = intent.getParcelableArrayListExtra<searchItems>("list")
-        Log.d("LIst of searchItems",myList.toString())
 
-
-
-        // Create and set up the adapter for your RecyclerView
-        itemAdapter = SearchItemAdapter(myList!!)
-        binding.matchitemsRecyclerview.adapter = itemAdapter
-
-
-        // Set up item click listener
-        itemAdapter.setOnItemClickListener(object : SearchItemAdapter.OnItemClickListener {
-            override fun onItemClick(item: searchItems) {
-                // Handle item click
-                Toast.makeText(this@SearchActivity, "Clicked on ${item.name}", Toast.LENGTH_SHORT).show()
+        viewModel.allFooditems.observe(this){
+            for(x in it){
+                searchItemsList.add(searchItems(name = x.foodTitle,
+                    imageUrl = x.foodImgUrl,
+                    type = 2,
+                    id = x.restaurantID))
             }
-        })
+
+
+            // Create and set up the adapter for your RecyclerView
+            itemAdapter = SearchItemAdapter(searchItemsList)
+            binding.matchitemsRecyclerview.adapter = itemAdapter
+            // Set up item click listener
+            itemAdapter.setOnItemClickListener(object : SearchItemAdapter.OnItemClickListener {
+                override fun onItemClick(item: searchItems) {
+                    // Handle item click
+                    Toast.makeText(this@SearchActivity, "Clicked on ${item.name}", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+                    // For category search
+            if(category!=""){
+                binding.searchView.setQuery(category,false)
+                binding.searchView.clearFocus()
+                // Filter the adapter with the entered search query
+                itemAdapter.filter.filter(category)
+            }
+        }
 
 
 
 
-        // Use the received list in the activity
+
+
+
+
+
+
 
 
        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                // Handle the search query submission if needed
+
                 return true
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
                 // Filter the adapter with the entered search query
-                itemAdapter.filter.filter(newText)
+
+                    itemAdapter.filter.filter(newText)
+
+
                 return true
             }
         })

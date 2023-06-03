@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.foodApp.customerapp.R
@@ -81,10 +82,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
     var restaurantList = mutableListOf<searchItems>()
     @SuppressLint("SetTextI18n")
     override fun setupViews() {
+        restaurantList.clear()
         //Top categories
         binding.searchBox.setOnClickListener {
             val intent = Intent(requireContext(), SearchActivity::class.java)
             intent.putParcelableArrayListExtra("list", ArrayList(restaurantList))
+            intent.putExtra("category", "")
             startActivity(intent)
         }
 
@@ -98,17 +101,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(
         val adapter = CategoryAdapter(data)
         binding.topcategoryRecyclerview.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.topcategoryRecyclerview.adapter = adapter
+        adapter.setOnItemClickListener(object:CategoryAdapter.OnItemClickListener{
+            override fun onItemClick(item: CategoryDomain) {
+
+                val intent = Intent(requireContext(), SearchActivity::class.java)
+                intent.putExtra("category", item.title)
+                intent.putParcelableArrayListExtra("list", ArrayList(restaurantList))
+                startActivity(intent)
+
+             //   Toast.makeText(requireContext(), "Clicked on ${item.title}", Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
         //All restaurants
 
         viewModel.getRestaurantItems.observe(this){
 
             for(x in it){
-                restaurantList.add(
-                    searchItems(x.restaurantName,
-                x.RestaurantImgUrl,1,
-                x.restaurantID)
-                )
+
+                if(!restaurantList.contains(searchItems(x.restaurantName,
+                        x.RestaurantImgUrl,1,
+                        x.restaurantID)
+                    )){
+                    restaurantList.add(
+                        searchItems(x.restaurantName,
+                            x.RestaurantImgUrl,1,
+                            x.restaurantID)
+                    )
+                }
+
             }
             binding.chooseText.text= "${it.size} restaurants at your service"
             binding.recyclerview2.adapter=

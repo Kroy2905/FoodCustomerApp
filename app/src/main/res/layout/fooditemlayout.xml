@@ -24,6 +24,9 @@
         android:elevation="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="7dp">
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -77,21 +80,115 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/counterLinearlayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="5dp"
-                    android:text="Add"
+                    android:orientation="horizontal"
+                    android:background="@drawable/curve_bg_app_color"
 
                     android:layout_gravity="end"
-                    android:textSize="15sp"
-                    android:background="@drawable/curve_bg_app_color"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="5dp"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        android:layout_weight="1"
+                        android:id="@+id/addtext"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/app_font1_bold"
+                        android:text="Add"
+
+
+                        android:textSize="20sp"
+
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/minustext"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/app_font1_bold"
+                        android:text="-"
+
+                        android:layout_gravity="end"
+                        android:textSize="20sp"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/counterText"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="0"
+
+                        android:fontFamily="@font/app_font1_bold"
+
+                        android:layout_gravity="end"
+                        android:textSize="20sp"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/plustext"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:text="+"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/app_font1_bold"
+
+                        android:layout_gravity="end"
+                        android:textSize="20sp"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                </LinearLayout>
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingHorizontal="20dp"-->
+<!--                    android:paddingVertical="5dp"-->
+<!--                    android:text="Add"-->
+
+<!--                    android:layout_gravity="end"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/curve_bg_app_color"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    />-->
 
             </LinearLayout>
 

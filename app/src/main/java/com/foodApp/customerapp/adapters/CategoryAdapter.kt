@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.foodApp.customerapp.R
 import com.foodApp.customerapp.models.CategoryDomain
+import com.foodApp.customerapp.models.searchItems
 
 class CategoryAdapter(private val data: List<CategoryDomain>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
@@ -15,7 +16,18 @@ class CategoryAdapter(private val data: List<CategoryDomain>) : RecyclerView.Ada
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.categoryimage)
         val textview: TextView = itemView.findViewById(R.id.categoryname)
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = data[position]
+                    itemClickListener?.onItemClick(item)
+                }
+            }
+        }
     }
+
+    private var itemClickListener: OnItemClickListener? = null
 
     // Inflate the view holder layout and return a new ViewHolder instance
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,5 +45,12 @@ class CategoryAdapter(private val data: List<CategoryDomain>) : RecyclerView.Ada
     // Return the number of items in the data set
     override fun getItemCount(): Int {
         return data.size
+    }
+    interface OnItemClickListener {
+        fun onItemClick(item: CategoryDomain)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
     }
 }

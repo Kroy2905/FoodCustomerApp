@@ -1,10 +1,7 @@
 package com.foodApp.customerapp.api
 
 //import com.myelin.ics.ui.models.*
-import com.foodApp.customerapp.models.custRegBody
-import com.foodApp.customerapp.models.custVerifyBody
-import com.foodApp.customerapp.models.restaurantItemResponse
-import com.foodApp.customerapp.models.statusResponse
+import com.foodApp.customerapp.models.*
 import com.foodApp.managementapp.models.demoResponse
 import com.foodApp.managementapp.models.fooditemResponse
 import retrofit2.Response
@@ -50,4 +47,7 @@ interface APIservice {
     // GET trip details
     @GET("/getrestaurants")    // API to be written here
     suspend fun getRestaurants() : Response <restaurantItemResponse>
+    // GET trip details
+    @GET("/getallfood")    // API to be written here
+    suspend fun getAllFoodItems() : Response <allfoodItemsResponse>
 }
