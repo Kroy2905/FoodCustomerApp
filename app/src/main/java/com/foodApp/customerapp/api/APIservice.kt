@@ -45,6 +45,10 @@ interface APIservice {
     suspend fun getFood(@Query("restaurantID") restaurantID:String) : Response <fooditemResponse>
 
     // GET trip details
+    @GET("/restaurant")    // API to be written here
+    suspend fun getRestaurantDetails(@Query("restaurantID") restaurantID:String) : Response <restaurantItemResponseItem>
+
+    // GET trip details
     @GET("/getrestaurants")    // API to be written here
     suspend fun getRestaurants() : Response <restaurantItemResponse>
     // GET trip details

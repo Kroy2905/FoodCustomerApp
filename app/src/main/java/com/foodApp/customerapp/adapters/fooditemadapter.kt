@@ -9,12 +9,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodApp.customerapp.R
+import com.foodApp.customerapp.Utilities.OnCartItemChangeListener
+import com.foodApp.customerapp.models.cartItems
 import com.foodApp.managementapp.models.fooditemResponse
 import java.util.*
 
-class fooditemadapter(private val data: fooditemResponse,context: Context) : RecyclerView.Adapter<fooditemadapter.ViewHolder>() {
+class fooditemadapter(private val data: fooditemResponse,context: Context, private val cartItemChangeListener: OnCartItemChangeListener) : RecyclerView.Adapter<fooditemadapter.ViewHolder>() {
 
-    // Create a ViewHolder class that holds references to the views
+    var cartItemList = mutableListOf<cartItems>()
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.food_image)
         val title: TextView = itemView.findViewById(R.id.food_title)
@@ -34,6 +37,13 @@ class fooditemadapter(private val data: fooditemResponse,context: Context) : Rec
 
     // Bind the data to the views in the ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        for(x in data){
+            val x = cartItems(x.foodID,x.restaurantID,x.foodPrice.toString(),0)
+            if(!cartItemList.contains(x)){
+                cartItemList.add(x)
+            }
+        }
         val item = data[position]
 
 
@@ -49,6 +59,34 @@ class fooditemadapter(private val data: fooditemResponse,context: Context) : Rec
         val randomNumber = (1.0f + random.nextFloat() * 3.9f).toString()
         holder.ratiing.text = randomNumber.substring(0, minOf(randomNumber.length, 3))
         holder.price.text= item.foodPrice.toString()
+
+        holder.addtextview.setOnClickListener {
+            holder.addtextview.visibility=View.GONE
+            holder.plustext.visibility=View.VISIBLE
+            holder.countertext.visibility=View.VISIBLE
+            holder.minustext.visibility=View.VISIBLE
+            cartItemList[position].quantity++
+            holder.countertext.text=cartItemList[position].quantity.toString()
+            cartItemChangeListener.onCartItemChange(cartItemList[position])
+        }
+        holder.plustext.setOnClickListener {
+            cartItemList[position].quantity++
+            holder.countertext.text=cartItemList[position].quantity.toString()
+            cartItemChangeListener.onCartItemChange(cartItemList[position])
+        }
+        holder.minustext.setOnClickListener {
+            cartItemList[position].quantity--
+            if( cartItemList[position].quantity==0){
+                holder.addtextview.visibility=View.VISIBLE
+                holder.plustext.visibility=View.GONE
+                holder.countertext.visibility=View.GONE
+                holder.minustext.visibility=View.GONE
+            }else{
+                holder.countertext.text=cartItemList[position].quantity.toString()
+            }
+            cartItemChangeListener.onCartItemChange(cartItemList[position])
+        }
+
     }
 
     // Return the number of items in the data set

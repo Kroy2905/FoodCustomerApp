@@ -18,6 +18,7 @@ class BaseRepository  (private  val  apIservice: APIservice) {
     private val getfooditem =MutableLiveData<fooditemResponse>()
     private val getrestauranitem =MutableLiveData<restaurantItemResponse>()
     private val allFoodItems =MutableLiveData<allfoodItemsResponse>()
+    private val restaurantDetails =MutableLiveData<restaurantItemResponseItem>()
     //    private val faceEmbeddings =MutableLiveData<faceEmbeddings>()
 //    val driverlogsLogResponse =MutableLiveData<LogResponse>()
 //
@@ -35,6 +36,9 @@ class BaseRepository  (private  val  apIservice: APIservice) {
         get() = getrestauranitem
     val _allfooditems: LiveData<allfoodItemsResponse>
         get() = allFoodItems
+
+    val _restaurantDetails: LiveData<restaurantItemResponseItem>
+        get() = restaurantDetails
 
 
     suspend fun getDemodata() {
@@ -63,6 +67,17 @@ class BaseRepository  (private  val  apIservice: APIservice) {
         if (result.body()!=null){
             Log.d("Response->",result.body().toString())
             getfooditem.postValue(result.body())
+        }else{
+            Log.d("Response->",result.body().toString())
+        }
+
+    }
+
+    suspend fun getRestaurantDetails(restaurantId:String) {
+        val result = apIservice.getRestaurantDetails(restaurantID = restaurantId)
+        if (result.body()!=null){
+            Log.d("Response->",result.body().toString())
+            restaurantDetails.postValue(result.body())
         }else{
             Log.d("Response->",result.body().toString())
         }

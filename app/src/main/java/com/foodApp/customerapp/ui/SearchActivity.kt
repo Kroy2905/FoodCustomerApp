@@ -1,5 +1,6 @@
 package com.foodApp.customerapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -56,7 +57,11 @@ class SearchActivity :BaseActivity<ActivitySearchBinding, SearchViewmodel>(
             itemAdapter.setOnItemClickListener(object : SearchItemAdapter.OnItemClickListener {
                 override fun onItemClick(item: searchItems) {
                     // Handle item click
-                    Toast.makeText(this@SearchActivity, "Clicked on ${item.name}", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this@SearchActivity, RestaurantFoodItemActivity::class.java)
+                    intent.putExtra("restaurantId", item.id)
+                    startActivity(intent)
+                   // Toast.makeText(this@SearchActivity, "Clicked on ${item.name}", Toast.LENGTH_SHORT).show()
                 }
             })
 

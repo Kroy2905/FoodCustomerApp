@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appPrimaryColour"
-    android:padding="10dp"
+    android:padding="5dp"
     tools:context=".ui.RestaurantFoodItemActivity">
 
     <androidx.cardview.widget.CardView
@@ -149,6 +149,69 @@
                 </androidx.cardview.widget.CardView>
 
             </ScrollView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/checkoutbox"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/appPrimaryColour"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="10dp"
+
+                android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/appPrimaryColour"
+                    android:layout_width="match_parent"
+                    android:padding="15dp"
+
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/foodItemstext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:fontFamily="@font/app_font1_bold2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textSize="15sp"
+                        android:text="Food Items |"
+                        />
+                    <TextView
+                        android:id="@+id/cartitemCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@+id/foodItemstext"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:fontFamily="@font/app_font1_bold2"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="0"
+                        />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/checkoutButton"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/curve_bg_app_color"
+                        android:backgroundTint="@color/primaryDarkColor"
+                        android:paddingHorizontal="15dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="Checkout"
+                        android:fontFamily="@font/app_font1_bold2"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
 
 
 
