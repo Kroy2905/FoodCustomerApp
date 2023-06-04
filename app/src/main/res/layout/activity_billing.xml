@@ -4,6 +4,769 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".ui.BillingActivity">
+    <include
+        android:id="@+id/actionBar"
+        layout="@layout/custom_action_bar" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/addressCardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/actionBar"
+
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/deliverTotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="15dp"
+                android:text="Deliver to :"
+                android:textSize="17sp"
+                android:fontFamily="@font/app_font1"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/ic_home"
+                android:drawableTint="@color/appPrimaryColour"
+                android:drawablePadding="3dp"
+
+                />
+
+            <TextView
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/addressTypeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/deliverTotext"
+                android:text="Home"
+                android:textSize="17sp"
+                android:fontFamily="@font/app_font1"
+                android:textColor="@color/black"
+
+                android:drawablePadding="3dp"
+
+                />
+
+            <TextView
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/changeAddresstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Change"
+                android:textSize="13sp"
+                android:fontFamily="@font/app_font1"
+                android:textColor="@color/colorFavourite"
+
+                android:drawablePadding="3dp"
+
+                />
+
+            <TextView
+
+                android:id="@+id/addressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/deliverTotext"
+                app:layout_constraintStart_toStartOf="@+id/deliverTotext"
+                android:text="GPM AMS Mansion, 5th Floor,Bengaluru"
+                android:textSize="13sp"
+                android:fontFamily="@font/app_font1"
+                android:textColor="#787777"
+                android:layout_marginStart="25dp"
+
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="5dp"
+
+
+
+        app:layout_constraintTop_toBottomOf="@+id/addressCardview"
+        app:layout_constraintBottom_toTopOf="@+id/paymentbox"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+
+
+                android:layout_height="match_parent">
+
+
+                <!-- Delivery time card view-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/deliveryCardView"
+                    android:layout_marginHorizontal="2dp"
+
+                    android:layout_marginTop="@dimen/cardview_top_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/deliverytimeText"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/app_font1"
+                        android:letterSpacing="0.04"
+                        android:padding="5dp"
+                        android:text="Delivery in 30-40 mins"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@+id/deliverTotext"
+                        app:layout_constraintTop_toBottomOf="@id/deliverTotext"
+
+
+                        app:drawableStartCompat="@drawable/clock1" />
+
+                </androidx.cardview.widget.CardView>
+
+<!--                Apply Coupon Card View -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/applyCouponCardview"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="@dimen/cardview_top_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/deliveryCardView"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/applyCouponText"
+                            android:layout_width="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/app_font1"
+                            android:letterSpacing="0.02"
+                            android:padding="5dp"
+                            android:text="Apply Coupon"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textAlignment="center"
+
+
+
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_arrow_forward" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- Cart Items Card View-->
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="2dp"
+                    android:id="@+id/cartitemsCardView"
+                    android:layout_marginTop="@dimen/cardview_top_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/applyCouponCardview"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/cartRecyclerView"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                   app:layout_constraintTop_toTopOf="parent"
+
+                   android:padding="10dp"
+
+                   />
+                        <View
+                            android:id="@+id/recyclerline"
+                            android:layout_marginTop="2dp"
+                            app:layout_constraintTop_toBottomOf="@id/cartRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@android:color/darker_gray" />
+
+                        <TextView
+                            android:layout_marginHorizontal="5dp"
+                            android:id="@+id/addMoreItemsText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+
+
+
+                            app:layout_constraintTop_toBottomOf="@+id/recyclerline"
+                            android:text="+ Add more Items"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/app_font1"
+                            android:textColor="@android:color/darker_gray"
+                            android:paddingHorizontal="10dp"
+
+
+
+                            />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- Cart Details -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cartDetailscardview"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="@dimen/cardview_top_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/cartitemsCardView"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:paddingVertical="10dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="0.5"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+                                android:padding="5dp"
+                                android:text="Cart Total"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                app:layout_constraintStart_toStartOf="@+id/deliverTotext"
+                                app:layout_constraintTop_toBottomOf="@id/deliverTotext"
+
+
+                                />
+                            <TextView
+                                android:id="@+id/cartTotalText"
+                                android:layout_marginEnd="15dp"
+                                android:drawableStart="@drawable/currency_rupee_img"
+
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:textStyle="bold"
+                                android:text="100"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+
+
+
+
+
+                        </LinearLayout>
+                        <View
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1.4dp"
+                            android:background="@drawable/dash_line" />
+
+                        <LinearLayout
+                            android:paddingVertical="5dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="0.5"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+                                android:padding="5dp"
+                                android:text="item discount"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                app:layout_constraintStart_toStartOf="@+id/deliverTotext"
+                                app:layout_constraintTop_toBottomOf="@id/deliverTotext"
+
+
+                                />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+
+
+
+
+
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:text="-"
+                                android:textColor="@color/primaryDarkColor"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+
+
+                                />
+
+                            <TextView
+                                android:id="@+id/itemDiscountText"
+                                android:layout_marginEnd="15dp"
+                                android:drawableStart="@drawable/currency_rupee_img"
+                                android:drawableTint="@color/primaryDarkColor"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:textStyle="bold"
+                                android:text="10"
+                                android:textColor="@color/primaryDarkColor"
+                                android:textSize="15sp"
+
+
+
+                                />
+
+
+
+
+
+                        </LinearLayout>
+                        <View
+                           android:layout_marginHorizontal="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1.4dp"
+                            android:background="@drawable/dash_line" />
+
+                        <LinearLayout
+                            android:paddingVertical="2dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="0.5"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+                                android:padding="5dp"
+                                android:text="Delivery Fee"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                app:layout_constraintStart_toStartOf="@+id/deliverTotext"
+                                app:layout_constraintTop_toBottomOf="@id/deliverTotext"
+
+
+                                />
+                            <TextView
+                                android:id="@+id/deliveryFeeText"
+                                android:layout_marginEnd="15dp"
+                                android:drawableStart="@drawable/currency_rupee_img"
+
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:textStyle="bold"
+                                android:text="40"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+
+
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="0.5"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+                                android:padding="5dp"
+                                android:text="Platform Fee"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+                            <TextView
+                                android:id="@+id/platformFeeText"
+                                android:layout_marginEnd="15dp"
+                                android:drawableStart="@drawable/currency_rupee_img"
+
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:textStyle="bold"
+                                android:text="2"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+
+
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="0.5"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+                                android:padding="5dp"
+                                android:text="GST and other Tax"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+                            <TextView
+                                android:id="@+id/GSTText"
+                                android:layout_marginEnd="15dp"
+                                android:drawableStart="@drawable/currency_rupee_img"
+
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:textStyle="bold"
+                                android:text="2"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+
+
+
+
+
+                        </LinearLayout>
+                        <View
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1.4dp"
+                            android:background="@drawable/dash_line" />
+
+                        <LinearLayout
+                            android:paddingVertical="10dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_weight="0.5"
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+                                android:padding="5dp"
+                                android:text="Amount to Pay"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                app:layout_constraintStart_toStartOf="@+id/deliverTotext"
+                                app:layout_constraintTop_toBottomOf="@id/deliverTotext"
+
+
+                                />
+                            <TextView
+                                android:id="@+id/amountToPayText"
+                                android:layout_marginEnd="15dp"
+                                android:drawableStart="@drawable/currency_rupee_img"
+
+
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+
+                                android:drawablePadding="10dp"
+                                android:fontFamily="@font/app_font1"
+                                android:letterSpacing="0.04"
+
+                                android:textStyle="bold"
+                                android:text="100"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+
+
+
+                                />
+
+
+
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/paymentbox"
+        android:alpha="1"
+
+
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/appPrimaryColour"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:padding="15dp"
+
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/totalamount"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/currency_rupee_img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/app_font1"
+                android:letterSpacing="0.04"
+
+                android:textStyle="bold"
+                android:text="100"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+
+                />
+            <TextView
+
+
+                android:id="@+id/view_full_order_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+
+                android:text="View Detailed Bill"
+                android:textSize="13sp"
+                android:fontFamily="@font/app_font1"
+                android:textColor="@color/primaryDarkColor"
+
+                app:layout_constraintTop_toBottomOf="@+id/totalamount"
+
+
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/checkoutButton"
+                android:layout_width="wrap_content"
+                android:background="@drawable/curve_bg_app_color"
+
+                android:paddingHorizontal="15dp"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Proceed to Pay"
+                android:fontFamily="@font/app_font1_bold2"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -39,7 +39,16 @@ class fooditemadapter(private val data: fooditemResponse,context: Context, priva
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         for(x in data){
-            val x = cartItems(x.foodID,x.restaurantID,x.foodPrice.toString(),0)
+
+            val x = cartItems(
+
+                foodId = x.foodID,
+                foodTitle = x.foodTitle,
+                restaurantId = x.restaurantID,
+                price = x.foodPrice.toString(),
+                0
+
+            )
             if(!cartItemList.contains(x)){
                 cartItemList.add(x)
             }

@@ -19,6 +19,7 @@ class RestaurantFoodItemActivity : BaseActivity<ActivityRestaurantFooditemBindin
     { inflater -> ActivityRestaurantFooditemBinding.inflate(inflater) }
 ) , OnCartItemChangeListener {
     var cartItemsList = mutableListOf<cartItems>()
+    var restaurantname = ""
 
     override fun setupViews() {
 
@@ -26,6 +27,8 @@ class RestaurantFoodItemActivity : BaseActivity<ActivityRestaurantFooditemBindin
 
             val intent = Intent(this, BillingActivity::class.java)
             intent.putParcelableArrayListExtra("cartlist", ArrayList(cartItemsList))
+            intent.putExtra("restaurantName", restaurantname)
+
             startActivity(intent)
         }
 
@@ -38,6 +41,7 @@ class RestaurantFoodItemActivity : BaseActivity<ActivityRestaurantFooditemBindin
 
         viewModel.restaurantDetails.observe(this) {
             binding.restaurantName.text = it.restaurantName
+            restaurantname=it.restaurantName
             binding.address.text = it.restaurantAddress
             Glide.with(this)
                 //.load(storageRef.child("/fooditems/foodItem1.jpeg"))
@@ -67,6 +71,7 @@ class RestaurantFoodItemActivity : BaseActivity<ActivityRestaurantFooditemBindin
     }
 
     override fun onCartItemChange(cartItem: cartItems) {
+        Log.d("item cart",cartItemsList.size.toString())
 
 
         val index = cartItemsList.indexOf(cartItem)

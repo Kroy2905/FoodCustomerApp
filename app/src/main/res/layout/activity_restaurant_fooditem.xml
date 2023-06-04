@@ -129,6 +129,7 @@
                         android:id="@+id/restaurantItemListRecyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="100dp"
 
 
                         android:orientation="vertical"
@@ -153,7 +154,9 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/checkoutbox"
+                android:alpha="1"
                 android:visibility="invisible"
+
                 android:layout_width="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -170,6 +173,7 @@
 
                     android:layout_height="match_parent">
                     <TextView
+                        android:textColor="@color/white"
                         android:id="@+id/foodItemstext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -189,18 +193,18 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:fontFamily="@font/app_font1_bold2"
                         android:textSize="15sp"
+                        android:textColor="@color/white"
                         android:layout_marginLeft="5dp"
                         android:text="0"
                         />
-                    <androidx.appcompat.widget.AppCompatButton
+                    <TextView
                         android:id="@+id/checkoutButton"
                         android:layout_width="wrap_content"
-                        android:background="@drawable/curve_bg_app_color"
-                        android:backgroundTint="@color/primaryDarkColor"
+
                         android:paddingHorizontal="15dp"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
-                        android:text="Checkout"
+                        android:text="View Cart"
                         android:fontFamily="@font/app_font1_bold2"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
